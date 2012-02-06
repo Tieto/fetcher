@@ -28,9 +28,14 @@ module Fetcher
 
     # Run the fetching process
     def fetch
-      establish_connection
-      get_messages
-      close_connection
+      begin
+        establish_connection
+        get_messages
+      rescue Exception => e
+        raise e
+      ensure
+        close_connection
+      end
     end
 
     protected

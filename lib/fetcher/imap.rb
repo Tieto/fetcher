@@ -48,11 +48,13 @@ module Fetcher
         begin
           process_message(msg)
           add_to_processed_folder(uid) if @processed_folder
-        rescue
+        rescue Exception => e
           handle_bogus_message(msg)
+          raise e
+        ensure
+          # Mark message as deleted
+          @connection.uid_store(uid, "+FLAGS", [:Seen, :Deleted])
         end
-        # Mark message as deleted 
-        @connection.uid_store(uid, "+FLAGS", [:Seen, :Deleted])
       end
     end
 
