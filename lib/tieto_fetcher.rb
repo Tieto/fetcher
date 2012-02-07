@@ -1,15 +1,15 @@
-module Fetcher
+module TietoFetcher
   # Use factory-style initialization or insantiate directly from a subclass
   #
   # Options:
   # * <tt>:type</tt> - Name of class as a symbol to instantiate
   #
-  # Other options are the same as Fetcher::Base.new
-  # 
+  # Other options are the same as TietoFetcher::Base.new
+  #
   # Example:
-  # 
-  # Fetcher.create(:type => :pop) is equivalent to
-  # Fetcher::Pop.new()
+  #
+  # TietoFetcher.create(:type => :pop) is equivalent to
+  # TietoFetcher::Pop.new()
   def self.create(options={})
     klass = options.delete(:type)
     raise ArgumentError, 'Must supply a type' unless klass
@@ -17,6 +17,6 @@ module Fetcher
   end
 end
 
-require 'fetcher/base'
-require 'fetcher/pop'
-require 'fetcher/imap'
+require 'tieto_fetcher/base'
+require 'tieto_fetcher/pop'
+require 'tieto_fetcher/imap'

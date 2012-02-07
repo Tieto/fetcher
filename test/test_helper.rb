@@ -6,7 +6,7 @@ require "rails/test_help"
 require 'rubygems'
 require 'test/unit'
 require 'mocha'
-require 'fetcher'
+require 'tieto_fetcher'
 
 Rails.backtrace_cleaner.remove_silencers!
 

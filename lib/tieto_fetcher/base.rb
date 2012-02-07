@@ -1,4 +1,4 @@
-module Fetcher
+module TietoFetcher
   class Base
     # Options:
     # * <tt>:server</tt> - Server to connect to.
@@ -10,7 +10,7 @@ module Fetcher
     # Additional protocol-specific options implimented by sub-classes
     #
     # Example:
-    #   Fetcher::Base.new(:server => 'mail.example.com',
+    #   TietoFetcher::Base.new(:server => 'mail.example.com',
     #                     :username => 'pam',
     #                     :password => 'test',
     #                     :receiver => IncomingMailHandler)

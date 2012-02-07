@@ -1,7 +1,7 @@
 (RUBY_VERSION < '1.9.0') ? require('system_timer') : require('timeout')
 require File.dirname(__FILE__) + '/../vendor/plain_imap'
 
-module Fetcher
+module TietoFetcher
   class Imap < Base
 
     PORT = 143
@@ -71,7 +71,7 @@ module Fetcher
       begin
         @connection.disconnect unless @connection.disconnected?
       rescue
-        Rails.logger.info("Fetcher: Remote closed connection before I could disconnect.")
+        Rails.logger.info("TietoFetcher: Remote closed connection before I could disconnect.")
       end
     end
 

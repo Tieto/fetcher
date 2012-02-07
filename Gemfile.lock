@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fetcher (0.0.1)
+    tieto_fetcher (0.8.1)
       SystemTimer
       rails (>= 3.1.0)
 
@@ -97,7 +97,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fetcher!
   jquery-rails
   mocha
   sqlite3
+  tieto_fetcher!

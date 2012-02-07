@@ -1,0 +1,10 @@
+Description:
+    Create a fetcher daemon with a given name
+
+Example:
+    ./script/generate tieto_fetcher_daemon MailReader
+
+    This will create:
+        /config/mail_reader_tieto_fetcher.yml
+        /script/mail_reader_tieto_fetcher
+  /lib/daemon.rb

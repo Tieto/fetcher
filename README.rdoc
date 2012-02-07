@@ -1,6 +1,6 @@
-= Fetcher
+= TietoFetcher
 
-Fetcher is a simple message fetcher perfect for using in a daemon or via cron.
+TietoFetcher is a simple message fetcher perfect for using in a daemon or via cron.
 
 It implements the following common pattern:
 
@@ -11,7 +11,7 @@ It implements the following common pattern:
 
 Install by adding to your gemfile:
 
-  gem 'fetcher'
+  gem 'tieto_fetcher'
 
 == Dependencies
 
@@ -22,7 +22,7 @@ As Ruby 1.9 onwards use native threads SystemTimer gem becomes redundant, and ti
 
 Create a new fetcher object like the following:
 
-  @fetcher = Fetcher.create({:type => :pop,
+  @tieto_fetcher = TietoFetcher.create({:type => :pop,
                              :receiver => IncomingMailHandler,
                              :server => 'mail.example.com',
                              :username => 'jim',
@@ -33,11 +33,11 @@ The receiver object is expected to have a receive method that takes a message as
 
 Call <tt>fetch</tt> to download messages and process them.
 
-  @fetcher.fetch
+  @tieto_fetcher.fetch
 
 == Configuration
 
-The following options can be passed to the <tt>Fetcher.create</tt> factory method:
+The following options can be passed to the <tt>TietoFetcher.create</tt> factory method:
 
 [<tt>type</tt>] POP or IMAP
 [<tt>server</tt>] The IP address or domain name of the server
@@ -54,26 +54,26 @@ The following options can be passed to the <tt>Fetcher.create</tt> factory metho
 
 == Daemon generator
 
-The Fetcher plugin comes with a generator to create a daemon:
+The TietoFetcher plugin comes with a generator to create a daemon:
 
-  script/generate fetcher_daemon MailerDaemon
+  script/generate tieto_fetcher_daemon MailerDaemon
 
 You should monitor the daemon using monit or god to ensure it does not crash.
 
 == Running via cron
 
-You can also run the Fetcher periodically via cron. It is important to ensure that only one
+You can also run the TietoFetcher periodically via cron. It is important to ensure that only one
 instance is running at one time, and for that the {Lockfile gem}[http://codeforpeople.com/lib/ruby/lockfile/] is recommended.
 
 Here is an example script to be with <tt>script/runner</tt> via cron:
 
   begin
-    Lockfile.new('cron_mail_fetcher.lock', :retries => 0) do
+    Lockfile.new('cron_mail_tieto_fetcher.lock', :retries => 0) do
       config = YAML.load_file("#{RAILS_ROOT}/config/mail.yml")
       config = config[RAILS_ENV].to_options
 
-      fetcher = Fetcher.create({:receiver => MailReceiver}.merge(config))
-      fetcher.fetch
+      tieto_fetcher = TietoFetcher.create({:receiver => MailReceiver}.merge(config))
+      tieto_fetcher.fetch
     end
   rescue Lockfile::MaxTriesLockError => e
     puts "Another fetcher is already running. Exiting."
