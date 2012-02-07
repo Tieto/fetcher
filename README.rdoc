@@ -97,6 +97,6 @@ Created by Dan Weinand and Luke Francl. Development supported by {Slantwise Desi
 
 Generators for Rails 3 compatibility added by Amol Hatwár, Exceed Consulting.
 
-Moved to gem by Martins Zakis.
+Contributed by Mekšs Artūrs. Moved to gem by Mārtiņš Zaķis.
 
 Licensed under the terms of the MIT License. Be excellent to each other.
